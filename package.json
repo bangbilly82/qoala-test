@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
+    "cogo-toast": "^3.2.1",
     "gulp": "^3.9.1",
     "gulp-csso": "^3.0.1",
     "gulp-sass": "^4.0.1",

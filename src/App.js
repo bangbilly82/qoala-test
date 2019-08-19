@@ -1,28 +1,85 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
+import cogoToast from 'cogo-toast';
 import Cards from './components/Cards';
 import API from './middleware/api';
 import './style.css';
 
 class App extends Component {
   state = {
+    master: [],
     users: [],
     activeFilter: ''
   };
 
   componentDidMount() {
-    const { backgroundClass } = this;
+    const { backgroundClass, handleScroll, handleScrollLeft } = this;
+    window.addEventListener('scroll', handleScroll);
+    document
+      .getElementById('scrollelement')
+      .addEventListener('scroll', handleScrollLeft);
     API.fetchUser().then(res => {
-      const users = res.results.map(item => {
+      const users = res.results.slice(0, 10).map(item => {
         const background = backgroundClass(item.dob.age);
         item.background = background;
         return item;
       });
       this.setState({
+        master: res.results,
         users
       });
     });
   }
+
+  handleScrollLeft = () => {
+    const { state, backgroundClass } = this;
+    const element = document.getElementById('scrollelement');
+    const scrollLeft = element.scrollLeft;
+    const offsetWidth = element.offsetWidth;
+    const scrollWidth = element.scrollWidth;
+    if (scrollLeft + offsetWidth >= scrollWidth) {
+      if (state.master.length === state.users.length) {
+        cogoToast.warn('Reached maximum data!');
+        return;
+      }
+      const users = state.master.slice(0, state.users.length + 10).map(item => {
+        const background = backgroundClass(item.dob.age);
+        item.background = background;
+        return item;
+      });
+      cogoToast.loading('fetching data..');
+      setTimeout(() => {
+        this.setState({
+          users
+        });
+      }, 3000);
+    }
+  };
+
+  handleScroll = () => {
+    const { state, backgroundClass } = this;
+    if (window.pageYOffset + window.innerHeight >= document.body.scrollHeight) {
+      if (state.master.length === state.users.length) {
+        cogoToast.warn('Reached maximum data!', {
+          position: 'bottom-right'
+        });
+        return;
+      }
+      const users = state.master.slice(0, state.users.length + 10).map(item => {
+        const background = backgroundClass(item.dob.age);
+        item.background = background;
+        return item;
+      });
+      cogoToast.loading('fetching data..', {
+        position: 'bottom-right'
+      });
+      setTimeout(() => {
+        this.setState({
+          users
+        });
+      }, 3000);
+    }
+  };
 
   filterUserByCity = () => {
     const { users } = this.state;
@@ -95,7 +152,7 @@ class App extends Component {
             </button>
           </div>
         </div>
-        <div className="qoala-user__wrapper">
+        <div className="qoala-user__wrapper" id="scrollelement">
           {state.users.length > 0 ? (
             <div className="qoala-user__container">{generateUserCards()}</div>
           ) : (

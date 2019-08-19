@@ -131,6 +131,9 @@ body {
       align-items: center;
       justify-content: space-between;
       box-sizing: border-box;
+      position: fixed;
+      top: 0;
+      background: #fff;
       &--logo {
         h3 {
           font-size: 1.4rem;
@@ -166,8 +169,8 @@ body {
     &__wrapper {
       height: auto !important;
       display: block;
-      padding: 0 2rem;
-      padding-top: 2rem;
+      padding: 0 1rem;
+      padding-top: 5rem;
       &::-webkit-scrollbar {
         width: 0 !important;
       }
@@ -186,8 +189,8 @@ body {
       box-sizing: border-box;
       border-radius: 5px;
       width: 100%;
-      padding: 2rem 1rem;
-      margin-bottom: 2rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
       .image-thumbnail {
         text-align: center;
         padding: 0;
