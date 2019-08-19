@@ -114,6 +114,9 @@ body {
       margin-bottom: 1rem;
       color: #fff;
     }
+    .mobile-email {
+      display: none;
+    }
   }
 }
 
@@ -185,6 +188,40 @@ body {
       width: 100%;
       padding: 2rem 1rem;
       margin-bottom: 2rem;
+      .image-thumbnail {
+        text-align: center;
+        padding: 0;
+        margin-right: 10px;
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+      .email {
+        display: none;
+      }
+      .address {
+        margin-bottom: 0;
+      }
+      .image-wrapper {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        .user-profile {
+          .name {
+            font-size: 1.2rem;
+          }
+          .age {
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+          }
+          .mobile-email {
+            display: block;
+            font-size: 0.8rem;
+            color: #fff;
+          }
+        }
+      }
     }
   }
 }
@@ -216,6 +253,40 @@ body {
       width: 100%;
       padding: 2rem 1rem;
       margin-bottom: 2rem;
+      .image-thumbnail {
+        text-align: center;
+        padding: 0;
+        margin-right: 10px;
+        img {
+          width: 50px;
+          height: 50px;
+        }
+      }
+      .email {
+        display: none;
+      }
+      .address {
+        margin-bottom: 0;
+      }
+      .image-wrapper {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+        .user-profile {
+          .name {
+            font-size: 1.2rem;
+          }
+          .age {
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+          }
+          .mobile-email {
+            display: block;
+            font-size: 0.8rem;
+            color: #fff;
+          }
+        }
+      }
     }
   }
 }
