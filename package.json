@@ -8,7 +8,7 @@
     "gulp": "^3.9.1",
     "gulp-csso": "^3.0.1",
     "gulp-sass": "^4.0.1",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-scripts": "0.9.x"
